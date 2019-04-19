@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const dbUtils = require('./db-utils');
+const redisUtil = require('./redis-util');
 
 app.use(express.json());
 
@@ -82,7 +83,7 @@ app.use(function (err, req, res, next) {
     res.status(500).send({
         error: err
     });
-})
+});
 
 app.listen(2233, () => {
     console.log('Server is listening at port 2233');
